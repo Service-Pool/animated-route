@@ -1,0 +1,14 @@
+name: Deploy this App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-deploy:
+    uses: Service-Pool/scripts/.github/workflows/reusable-deploy.yml@main
+    with:
+      repo_url: "git@github.com:${{ github.repository }}.git"
+      destination: "/var/www/animated-route"
+      branch: "${{ github.ref_name }}"
+      pre_deploy: "echo 'Starting deployment...'"
+      post_deploy: "echo 'Deployment finished!'"
