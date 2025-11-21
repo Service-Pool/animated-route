@@ -13,9 +13,9 @@ services:
       - .env
     volumes:
       - ../../:/app
+      - ./command.sh:/tmp/app/command.sh
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./command.sh:/tmp/app/command.sh
       - node_modules:/app/node_modules
     # ports:
     networks:
