@@ -1,0 +1,33 @@
+name: ${COMPOSE_PROJECT_NAME}
+
+services:
+  animated-route:
+    image: ${COMPOSE_PROJECT_NAME}-app
+    hostname: app
+    container_name: ${COMPOSE_PROJECT_NAME}-App
+    build:
+      context: .
+      dockerfile: ../Dockerfile.app
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - ../../:/app
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./command.sh:/tmp/app/command.sh
+      - node_modules:/app/node_modules
+    # ports:
+    networks:
+      npm-network:
+      animated-route-network:
+
+volumes:
+  node_modules:
+
+networks:
+  npm-network:
+    external: true
+  animated-route-network:
+    driver: bridge
+    name: ${COMPOSE_PROJECT_NAME}-network

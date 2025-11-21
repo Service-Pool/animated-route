@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/outcomer/animated-route.git"
+    "url": "git+https://github.com/Service-Pool/animated-route.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/outcomer/animated-route/issues"
+    "url": "https://github.com/Service-Pool/animated-route/issues"
   },
-  "homepage": "https://github.com/outcomer/animated-route#readme",
+  "homepage": "https://github.com/Service-Pool/animated-route#readme",
   "dependencies": {
     "@material/web": "^2.2.0"
   }
