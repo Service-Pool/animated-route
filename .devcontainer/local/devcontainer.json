@@ -5,11 +5,12 @@
   "runServices": [],
   "workspaceFolder": "/app",
   "shutdownAction": "none",
+  "remoteUser": "root",
   "features": {
     //  "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
   "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/deploybot/.ssh,readonly,type=bind"
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly,type=bind"
   ],
   "customizations": {
     "vscode": {
@@ -23,7 +24,8 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "typescript.tsdk": "node_modules/typescript/lib",
-        "eslint.validate": ["javascript", "typescript", "html"]
+        "eslint.validate": ["javascript", "typescript", "html"],
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
   }
