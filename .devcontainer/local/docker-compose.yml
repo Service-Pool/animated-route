@@ -9,6 +9,7 @@ services:
       context: .
       dockerfile: ../Dockerfile.app
     working_dir: /app
+    restart: always
     env_file:
       - .env
     volumes:
