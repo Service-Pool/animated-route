@@ -11,4 +11,4 @@ jobs:
       destination: "/var/www/animated-route"
       branch: "${{ github.ref_name }}"
       pre_deploy: "echo 'Starting deployment...'"
-      post_deploy: "cd /var/www/animated-route/.devcontainer/dev && docker compose down && docker compose up --build -d && bash /var/www/animated-route/.devcontainer/dev/cmd-run.sh"
+      post_deploy: "cd /var/www/animated-route/.devcontainer/dev && docker compose down && docker compose up --build -d --wait && bash /var/www/animated-route/.devcontainer/dev/cmd-run.sh"

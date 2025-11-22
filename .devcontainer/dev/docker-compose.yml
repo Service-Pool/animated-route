@@ -18,6 +18,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - node_modules:/app/node_modules
     # ports:
+    healthcheck:
+      test: ["CMD", "test", "-S", "/run/supervisor.sock"]
+      interval: 2s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
     networks:
       npm-network:
 
