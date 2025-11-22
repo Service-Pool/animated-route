@@ -7,6 +7,9 @@ RUN pip3 install --break-system-packages multivisor[rpc]
 RUN mkdir -p /var/log/supervisor
 
 COPY _configs/Caddyfile /etc/caddy/Caddyfile
-COPY _configs/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY _configs/supervisord.conf /etc/supervisor/supervisord.conf
+
+# Create symlink for supervisorctl to find config automatically (like Debian)
+RUN ln -sf /etc/supervisor/supervisord.conf /etc/supervisord.conf
 
 CMD ["bash", "/tmp/app/cmd-animated-route.sh"]

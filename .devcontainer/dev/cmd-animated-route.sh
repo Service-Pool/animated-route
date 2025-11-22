@@ -11,4 +11,4 @@ source ~/.bashrc
 npm install -g @anthropic-ai/claude-code
 
 # Start supervisord
-exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
