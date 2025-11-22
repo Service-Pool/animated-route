@@ -10,8 +10,5 @@ source ~/.bashrc
 # Claude Code install
 npm install -g @anthropic-ai/claude-code
 
-# Run Caddy in background
-caddy run --config /etc/caddy/Caddyfile
-
-# Keep container running
-# tail -f /dev/null
+# Start supervisord
+exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
