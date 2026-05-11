@@ -1,14 +1,40 @@
-name: Deploy this App
+name: Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to deploy"
+        required: true
 
 jobs:
-  call-deploy:
-    uses: Service-Pool/scripts/.github/workflows/reusable-deploy.yml@main
-    with:
-      repo_url: "git@github.com:${{ github.repository }}.git"
-      destination: "/var/www/animated-route"
-      branch: "${{ github.ref_name }}"
-      pre_deploy: "echo 'Starting deployment...'"
-      post_deploy: "cd /var/www/animated-route/.devcontainer/dev && docker compose down && docker compose up --build -d --wait && bash /var/www/animated-route/.devcontainer/dev/cmd-run.sh"
+  deploy:
+    runs-on: [ self-hosted, ubuntu-4gb-hel1-1 ]
+    environment: production
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Cleanup Docker
+        run: |
+          docker builder prune -f
+
+      - name: Build .env
+        env:
+          ENV_FILE: ${{ vars.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" | sed 's/\r//' > .devcontainer/mapped/.env
+
+      - name: Deploy
+        run: |
+          set -euo pipefail
+          cd .devcontainer/mapped
+          echo "DOCKER_UID=$(id -u)" >> .env
+          echo "DOCKER_GID=$(id -g)" >> .env
+          docker compose down
+          docker compose up --build -d --wait
+          bash cmd-run.sh
