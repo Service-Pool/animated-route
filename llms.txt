@@ -1,0 +1,26 @@
+# GPX Track Animator
+
+> A free browser-based tool for animating GPX tracks on an interactive map with video recording support.
+
+## About
+
+GPX Track Animator lets you upload a GPX file from any GPS device or fitness app and animate your route on an interactive map. You can adjust animation duration, zoom level, map style, and camera behavior. Once satisfied, record the animation directly in the browser and export it as a video to share.
+
+## Features
+
+- Upload and animate any GPX track (running, cycling, hiking, etc.)
+- Adjustable animation duration (5–60 seconds)
+- Multiple map styles: CartoDB Light/Dark/Voyager, OSM, Satellite, CyclOSM, World Street, World Topo
+- Camera follow mode — map pans along the route during animation
+- Densified track mode — interpolates points every 5 meters for smoother animation
+- Ending scenarios: Info Box, Passport, Squint
+- Built-in video recording — no external software needed
+- Weight input for calorie estimation
+- Counts total animations played
+
+## Links
+
+- App: https://animated-route.svcpool.com/
+- Source code: https://github.com/outcomer/animated-route
+- Author: https://www.linkedin.com/in/david-evdoshchenko/
+- More tools: https://svcpool.com

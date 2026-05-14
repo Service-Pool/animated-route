@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /node_modules/
+
+Sitemap: https://animated-route.svcpool.com/sitemap.xml
