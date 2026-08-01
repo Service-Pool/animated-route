@@ -21,6 +21,8 @@ export class UIController {
 		this.deleteGpxBtn = document.getElementById('deleteGpxBtn');
 		this.toggleControlsBtn = document.getElementById('toggleControlsBtn');
 		this.animationCountDisplay = document.getElementById('animationCount');
+		this.mapEmptyState = document.getElementById('mapEmptyState');
+		this.trackDependentControls = document.querySelector('.track-dependent-controls');
 
 		this.isControlsOpen = true;
 		this.isControlsVisible = true;
@@ -226,5 +228,16 @@ export class UIController {
 		if (this.animationCountDisplay) {
 			this.animationCountDisplay.textContent = count.toLocaleString();
 		}
+	}
+
+	/**
+	 * Enable/disable track-dependent UI (Animate, Record, settings) and the map empty state
+	 * @param {boolean} hasTrack - Whether a GPX track is currently loaded
+	 */
+	setTrackLoaded(hasTrack) {
+		this.startBtn.toggleAttribute('disabled', !hasTrack);
+		this.recordBtn.toggleAttribute('disabled', !hasTrack);
+		this.trackDependentControls.classList.toggle('disabled', !hasTrack);
+		this.mapEmptyState.classList.toggle('hidden', hasTrack);
 	}
 }

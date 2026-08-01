@@ -46,6 +46,24 @@
 	padding: 20px;
 }
 
+.intro-text {
+	font-family: system-ui;
+	font-weight: 300;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #555;
+	margin-bottom: 16px;
+}
+
+.track-dependent-controls {
+	transition: opacity 0.2s ease;
+}
+
+.track-dependent-controls.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
 .sidebar-footer {
 	display: flex;
 	align-items: center;

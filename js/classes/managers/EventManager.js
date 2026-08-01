@@ -147,7 +147,9 @@ export class EventManager {
 		this.ui.gpxFileInput.addEventListener('change', (e) => {
 			this.gpxManager.handleGPXUpload(e, (fileName) => {
 				this.ui.gpxFileName.textContent = `📄 ${fileName}`;
+				this.ui.gpxFileName.classList.add('has-track');
 				this.ui.deleteGpxBtn.classList.add('visible');
+				this.ui.setTrackLoaded(true);
 
 				// Clear animation state
 				if (this.animator.animatedLine) {
@@ -170,7 +172,9 @@ export class EventManager {
 				this.animator.currentStep = 0;
 
 				this.ui.gpxFileName.textContent = 'No track loaded';
+				this.ui.gpxFileName.classList.remove('has-track');
 				this.ui.deleteGpxBtn.classList.remove('visible');
+				this.ui.setTrackLoaded(false);
 			});
 		});
 

@@ -140,7 +140,9 @@ export class TrackVisualization {
 			const appData = this.storageManager.load();
 			if (!appData) {
 				this.ui.gpxFileName.textContent = 'No track loaded';
+				this.ui.gpxFileName.classList.remove('has-track');
 				this.ui.deleteGpxBtn.classList.remove('visible');
+				this.ui.setTrackLoaded(false);
 				return;
 			}
 
@@ -154,7 +156,9 @@ export class TrackVisualization {
 				const gpxToDisplay = appData.useDensified && appData.gpxDensified ? appData.gpxDensified : appData.gpx;
 				this.gpxManager.parseAndDisplayGPX(gpxToDisplay, false);
 				this.ui.gpxFileName.textContent = `📄 ${appData.gpxFileName}`;
+				this.ui.gpxFileName.classList.add('has-track');
 				this.ui.deleteGpxBtn.classList.add('visible');
+				this.ui.setTrackLoaded(true);
 				console.log('Loaded app data from localStorage');
 				console.log('Using', appData.useDensified ? 'densified' : 'original', 'track');
 
@@ -164,7 +168,9 @@ export class TrackVisualization {
 			} else {
 				this.map.setZoom(appData.routeZoom);
 				this.ui.gpxFileName.textContent = 'No track loaded';
+				this.ui.gpxFileName.classList.remove('has-track');
 				this.ui.deleteGpxBtn.classList.remove('visible');
+				this.ui.setTrackLoaded(false);
 			}
 		} catch (error) {
 			console.error('Error loading initial data:', error);

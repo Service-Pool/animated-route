@@ -142,12 +142,19 @@ body {
 #gpxFileName {
 	display: block;
 	margin-top: 8px;
+	margin-bottom: 15px;
 	font-size: 12px;
-	color: #5f6368;
+	color: #9aa0a6;
+	font-style: italic;
 	text-align: center;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+#gpxFileName.has-track {
+	color: #5f6368;
+	font-style: normal;
 }
 
 /* Hamburger menu button */

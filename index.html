@@ -59,6 +59,12 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 	<div id="map"></div>
+	<div id="mapEmptyState" class="map-empty-state">
+		<md-icon>route</md-icon>
+		<h2>No route loaded yet</h2>
+		<p>This app smoothly animates your GPX track on the map with customizable speed, zoom, map style and ending scenario — then lets you record it as a ready-made video clip you can drop straight into your edit.</p>
+		<p>Upload a GPX file from your run, ride or hike using the "Load GPX" button in the sidebar. Your track will appear on the map, ready to animate or record as a video.</p>
+	</div>
 	<md-icon-button id="toggleControlsBtn" class="hamburger-btn" title="Toggle Controls">
 		<md-icon>menu</md-icon>
 	</md-icon-button>
@@ -67,16 +73,33 @@
 			<h1 style="font-size:inherit;font-weight:inherit;margin:0">GPX Track Animator</h1>
 		</div>
 		<div class="controls-content">
+		<p class="intro-text">
+			Turn a GPX file from your run, ride or hike into an animated video of your route. Load a track below, then press Animate to preview it, or Record to save a video.
+		</p>
+		<div class="gpx-upload">
+			<div class="gpx-buttons">
+				<md-filled-button id="uploadGpxBtn">
+					<md-icon slot="icon">folder_open</md-icon>
+					Load GPX
+				</md-filled-button>
+				<input type="file" id="gpxFile" accept=".gpx" style="display: none;">
+				<md-icon-button id="deleteGpxBtn" class="delete-btn" title="Delete track">
+					<md-icon>close</md-icon>
+				</md-icon-button>
+			</div>
+			<span id="gpxFileName"></span>
+		</div>
 		<div class="button-row">
-			<md-filled-button id="startBtn">
+			<md-filled-button id="startBtn" disabled>
 				<md-icon slot="icon">play_circle</md-icon>
 				Animate
 			</md-filled-button>
-			<md-filled-button id="recordBtn">
+			<md-filled-button id="recordBtn" disabled>
 				<md-icon slot="icon">radio_button_checked</md-icon>
 				Record
 			</md-filled-button>
 		</div>
+		<div class="track-dependent-controls">
 		<div class="speed-control">
 			<label for="durationSlider">
 				Animation duration: <span id="durationLabel"></span>s
@@ -125,22 +148,10 @@
 				<md-select-option value="squint" selected><div slot="headline">Squint</div></md-select-option>
 			</md-outlined-select>
 		</div>
+		</div>
 		<div class="animation-counter">
 			<div class="counter-label">Total animations played:</div>
 			<span id="animationCount">...</span>
-		</div>
-		<div class="gpx-upload">
-			<div class="gpx-buttons">
-				<md-filled-button id="uploadGpxBtn">
-					<md-icon slot="icon">folder_open</md-icon>
-					Load GPX
-				</md-filled-button>
-				<input type="file" id="gpxFile" accept=".gpx" style="display: none;">
-				<md-icon-button id="deleteGpxBtn" class="delete-btn" title="Delete track">
-					<md-icon>close</md-icon>
-				</md-icon-button>
-			</div>
-			<span id="gpxFileName"></span>
 		</div>
 		</div>
 		<div class="sidebar-footer">
