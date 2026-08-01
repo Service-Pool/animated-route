@@ -103,12 +103,13 @@ export class RouteAnimator {
 			this.currentStep = this.state.fullRoute.length;
 		}
 
-		const coords = this.state.fullRoute.slice(0, this.currentStep).map(p => [p.lat, p.lng]);
+		const point = this.state.fullRoute[this.currentStep - 1];
+		const latLng = [point.lat, point.lng];
 
 		if (this.animatedLine) {
-			this.animatedLine.setLatLngs(coords);
+			this.animatedLine.addLatLng(latLng);
 		} else {
-			this.animatedLine = L.polyline(coords, {
+			this.animatedLine = L.polyline([latLng], {
 				color: this.state.trackColor,
 				weight: 4,
 				opacity: 0.8,
@@ -119,9 +120,8 @@ export class RouteAnimator {
 		const percent = Math.round((this.currentStep / this.state.fullRoute.length) * 100);
 		this.ui.updateProgress(percent);
 
-		if (this.state.cameraFollow && coords.length > 0) {
-			const lastPoint = coords[coords.length - 1];
-			this.map.panTo(lastPoint, { animate: true });
+		if (this.state.cameraFollow) {
+			this.map.panTo(latLng, { animate: false });
 		}
 	}
 

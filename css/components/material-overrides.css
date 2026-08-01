@@ -126,6 +126,7 @@ body {
 	--md-icon-button-state-layer-height: 40px;
 	--md-icon-button-state-layer-width: 40px;
 	--md-icon-button-icon-color: #ffffff;
+	--md-icon-button-hover-icon-color: #ffffff;
 	background: #ea4335;
 	border-radius: 50%;
 	display: none;
