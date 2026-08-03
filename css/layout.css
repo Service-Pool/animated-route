@@ -15,7 +15,9 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 12px;
-	max-width: 360px;
+	width: min(360px, calc(100vw - 32px));
+	max-height: calc(100dvh - 32px);
+	overflow-y: auto;
 	text-align: center;
 	padding: 28px 24px;
 	background: rgba(255, 255, 255, 0.92);
@@ -44,6 +46,39 @@
 	font-size: 13px;
 	line-height: 1.5;
 	margin: 0;
+}
+
+@media (max-width: 480px) {
+	.map-empty-state {
+		gap: 10px;
+		padding: 20px 16px;
+		border-radius: 10px;
+	}
+
+	.map-empty-state md-icon {
+		font-size: 32px;
+		width: 32px;
+		height: 32px;
+		margin-bottom: 2px;
+	}
+
+	.map-empty-state h2 {
+		font-size: 15px;
+	}
+
+	.map-empty-state p {
+		font-size: 12px;
+	}
+}
+
+@media (max-height: 480px) {
+	.map-empty-state {
+		top: 16px;
+		left: 50%;
+		transform: translateX(-50%);
+		gap: 8px;
+		padding: 16px;
+	}
 }
 
 .map-empty-state .demo-link {
