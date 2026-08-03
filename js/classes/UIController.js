@@ -29,6 +29,11 @@ export class UIController {
 
 		this.initOutsideClickHandler();
 		this.updateControlsVisibility();
+
+		const footerYear = document.getElementById('footerYear');
+		if (footerYear) {
+			footerYear.textContent = new Date().getFullYear();
+		}
 	}
 
 	/**
