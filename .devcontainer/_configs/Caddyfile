@@ -1,5 +1,6 @@
 :80 {
     root * /app
-    templates
+    @mapmanager path /js/classes/managers/MapManager.js
+    templates @mapmanager
     file_server
 }
