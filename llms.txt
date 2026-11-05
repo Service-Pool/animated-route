@@ -20,7 +20,7 @@ GPX Track Animator lets you upload a GPX file from any GPS device or fitness app
 
 ## Links
 
-- App: https://animated-route.svcpool.com/
+- App: https://animated-route.outcomer.work/
 - Source code: https://github.com/outcomer/animated-route
 - Author: https://www.linkedin.com/in/david-evdoshchenko/
-- More tools: https://svcpool.com
+- More tools: https://outcomer.work
